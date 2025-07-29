@@ -8,9 +8,20 @@ body {
     margin: 0;
     padding: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+}
+
+.target-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: monospace;
+    letter-spacing: 4px;
 }
 
 .grid-container {
@@ -68,6 +79,19 @@ body {
     pointer-events: none;
 }
 
+.square.wrong {
+    animation: wrongClick 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.square.wrong::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.6) 0%, transparent 70%);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+}
+
 @keyframes satisfyingClick {
     0% {
         transform: scale(1);
@@ -83,6 +107,30 @@ body {
     }
     60% {
         transform: scale(1.05) rotate(-0.5deg);
+    }
+    80% {
+        transform: scale(0.98) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes wrongClick {
+    0% {
+        transform: scale(1);
+    }
+    15% {
+        transform: scale(0.9) rotate(-2deg);
+    }
+    30% {
+        transform: scale(1.05) rotate(2deg);
+    }
+    45% {
+        transform: scale(0.95) rotate(-1deg);
+    }
+    60% {
+        transform: scale(1.02) rotate(1deg);
     }
     80% {
         transform: scale(0.98) rotate(0deg);
