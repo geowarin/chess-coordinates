@@ -41,6 +41,11 @@ export function App() {
             return newSet;
           });
         }, 600);
+
+        // Pick new target square after a short delay
+        setTimeout(() => {
+          setTargetSquare(randomSquare());
+        }, 100);
       } else {
         // Wrong answer - play buzzer and show error animation
         playBuzzerSound();
@@ -55,11 +60,6 @@ export function App() {
           });
         }, 600);
       }
-
-      // Pick new target square after a short delay
-      setTimeout(() => {
-        setTargetSquare(randomSquare());
-      }, 100);
     },
     [targetSquare],
   );
